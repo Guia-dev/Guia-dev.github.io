@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stle.css">
+    <title>Guia's Portfolio - Loading</title>
+</head>
+<body>
+    <div class="loading_screen container" id="loading-screen">
+        <img class="loading_icon" id="loading-icon" src="assets/logo.png" alt="Loading Icon">
+    </div>
+
+    <script>
+        const loading = document.getElementById('loading-icon');
+
+        function iconAnimation() {
+            loading.classList.add('animate-icon');
+            setTimeout(iconAnimationStop, 1000); // Stops animation after 1 second
+        }
+
+        function iconAnimationStop() {
+            loading.classList.remove('animate-icon');
+        }
+
+        // Start the animation every 2 seconds
+        const intervalID = setInterval(iconAnimation, 2000);
+
+        // Redirect to home.html after 6 seconds
+        setTimeout(() => {
+            clearInterval(intervalID); // Stop the interval
+            window.location.href = 'home.html'; // Redirect to home.html
+        }, 6000);
+    </script>
+</body>
+</html>
