@@ -3,34 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="stle.css">
-    <title>Guia's Portfolio - Loading</title>
+    <title>YOU'RE INVITED</title>
 </head>
+
+<style>
+audio{
+    visibility: hidden;
+}
+
+body{
+    background-color: #EBB7C8;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 900;
+}
+
+h1{
+    -webkit-text-stroke: 1.5px black;
+    text-align: center;
+}
+
+.image{
+    justify-self: center;
+}
+
+.button{
+    position: relative;
+margin-bottom: 10px;
+    justify-self: center;
+}
+
+button{
+    background-color: red;
+    border: none;
+    padding: 10px 10px;
+}
+
+.answer{
+background-color: green;
+}
+
+button{
+    color:white;
+}
+
+.buttons{
+    width: 100%;
+}
+
+</style>
+
+
 <body>
-    <div class="loading_screen container" id="loading-screen">
-        <img class="loading_icon" id="loading-icon" src="assets/logo.png" alt="Loading Icon">
-    </div>
+<audio controls autoplay>
+  <source src="f3bfeefd-1ea7-4a58-a9f6-a27ccfa5896c.mp3" type="audio/mpeg">
+</audio>
 
-    <script>
-        const loading = document.getElementById('loading-icon');
+<audio id="myAudio" src="Yehey Sound Effects.mp3"></audio>
+  <div><h1 id="text"> CONGRATULATIONS YOU'RE INVITED TO MY</h1></div>
+  <div class="image">
+    <img src="bubu-dudu-bubu.gif" alt="">
+  </div>
+  <div class="buttons">
+    <div class="button">
+    <button id="myButton2" class="answer">YES</button>
+  </div>
 
-        function iconAnimation() {
-            loading.classList.add('animate-icon');
-            setTimeout(iconAnimationStop, 1000); // Stops animation after 1 second
-        }
+  <div class="button">
+    <button id="myButton">NO</button>
+  </div>
+  </div>
+    
+<script>
+    const button = document.getElementById('myButton');
+    const button2 = document.getElementById('myButton2');
+  let scale = 1; // initial scale
 
-        function iconAnimationStop() {
-            loading.classList.remove('animate-icon');
-        }
+  let marginBottom = 0; 
 
-        // Start the animation every 2 seconds
-        const intervalID = setInterval(iconAnimation, 2000);
+    const messages = [
+    "Please Say YES!",
+    "PLEAAASEEEEEE",
+    "SIGEEE NAAAA",
+    "I WILL CRYYY NAAA",
+    "BABIIIIII"
+  ];
+const audio = document.getElementById('myAudio');
+  button.addEventListener('click', () => {
+    const randomIndex = Math.floor(Math.random() * messages.length);
+    scale += .20; // increase size by 20% each click
+    marginBottom += 10; 
+    button2.style.transform = `scale(${scale})`;
+    button2.style.transition = 'transform 0.3s';
+    button2.style.marginBottom = `${marginBottom}px`;
+    button.textContent = messages[randomIndex];
+  });
 
-        // Redirect to home.html after 6 seconds
-        setTimeout(() => {
-            clearInterval(intervalID); // Stop the interval
-            window.location.href = 'home.html'; // Redirect to home.html
-        }, 6000);
-    </script>
+  const text = document.getElementById('text');
+
+  button2.addEventListener('click', () => {
+    text.textContent = "THANK YOU SO MUCH> SEE YOU ON MAY 25 MWAAA"
+    button.style.visibility = "hidden";
+    button2.style.visibility = "hidden";
+    audio.play();
+  });
+</script>
+
 </body>
 </html>
